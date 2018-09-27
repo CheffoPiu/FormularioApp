@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!--- Boostrap 4 CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark">
+    <a href="/"class="navbar-brand">VEHICULOS</a>
+</nav>
+
+
+
+<div class="container">
+    <div class="row">
+
+<div class="col-md-5 offset-md-3">
+    <div class="card">
+        <div class="card-body">
+            <form action="/edit/<%= Propiedades._id %>"  method="POST">
+                <div class="form-group">
+                    <input type="text" name="userId" placeholder="userId" class="form-control" value="<%= Propiedades.userId %>">
+                </div>
+                <div class="form-group">
+                <textarea name="userEmail" cols="80" class="form-control"  placeholder="userEmail"><%= Propiedades.userEmail %></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="associatedObjectId" placeholder="associatedObjectId" class="form-control" value="<%= Propiedades.associatedObjectId %>">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="associatedObjectType" placeholder="associatedObjectType" class="form-control" value="<%= Propiedades.associatedObjectType %>">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="portalId" placeholder="portalId" class="form-control" value="<%= Propiedades.portalId %>">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    ACTUALIZAR
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>

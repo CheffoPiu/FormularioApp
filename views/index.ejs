@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html ng-app=''>
+<head>
+
+    <!--- Boostrap 4 CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark">
+    <a href="/"class="navbar-brand">VEHICULOS</a>
+</nav>
+
+<a>Hola <%= asunto %></a>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-5 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/add"  method="POST">
+                        <div class="form-group">
+                            <input type="text" name="Marca" placeholder="Marca" class="form-control" value="">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="Modelo" cols="80" class="form-control"  placeholder="Modelo"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="Anio" placeholder="Año" class="form-control" value="">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="Placa" placeholder="Placa" class="form-control" value="">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="Nmotor" placeholder="Nmotor" class="form-control" value="">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="Nchasis" placeholder="Nchasis" class="form-control" value="">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="Color" placeholder="Color" class="form-control" value="">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="userId" placeholder="userId" class="form-control" value="">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="userEmail" placeholder="userEmail" class="form-control" value="">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="associatedObjectId" placeholder="associatedObjectId" class="form-control" value="">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="associatedObjectType" placeholder="associatedObjectType" class="form-control" value="">
+                        </div>
+                        <div class="form-group">
+
+                            <!-- LISTA DESPLEGABLE -->
+
+                                    <select class="form-control" name="portalId" placeholder="portalId">  <!-- placeholder no funciona en un select -->
+                                        <option value=""hidden>portalId</option>
+                                        <% for(var i=0; i < asunto.length; i++) { %>
+                                        <tr>
+                                            <td><%= i + 1%></td>
+                                            <option><%= asunto[i].Name %></option>
+                                        </tr>
+                                        <% } %>
+                                    </select>
+
+                        </div>
+
+                        <hr> </hr>   <!-- Salto de linea -->
+
+                        <button type="submit" class="btn btn-primary btn-block">
+                            ACTUALIZAR
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- CABECERA DE MIS DATOS  -->>
+
+        <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Nº</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Año</th>
+                    <th>Placa</th>
+                    <th>Nmotor</th>
+                    <th>Nchasis</th>
+                    <th>Color</th>
+                    <th>userId</th>
+                    <th>userEmail</th>
+                    <th>associatedObjectId</th>
+                    <th>associatedObjectType</th>
+                    <th>portalId</th>
+                    <th>Descripción</th>
+                </tr>
+                </thead>
+
+
+                <!-- DATOS A MOSTRARSE  -->>
+
+
+                <tbody>
+                <% for(var i=0; i < vehiculos.length; i++) { %>
+                <tr>
+                    <td><%= i + 1%></td>
+                    <td><%= vehiculos[i].Marca %></td>
+                    <td><%= vehiculos[i].Modelo%></td>
+                    <td><%= vehiculos[i].Anio %></td>
+                    <td><%= vehiculos[i].Placa %></td>
+                    <td><%= vehiculos[i].Nmotor %></td>
+                    <td><%= vehiculos[i].Nchasis %></td>
+                    <td><%= vehiculos[i].Color %></td>
+                    <td><%= vehiculos[i].userId %></td>
+                    <td><%= vehiculos[i].userEmail %></td>
+                    <td><%= vehiculos[i].associatedObjectId %></td>
+                    <td><%= vehiculos[i].associatedObjectType %></td>
+                    <td><%= vehiculos[i].portalId %></td>
+                    <td>
+                        <a href="/delete/<%=vehiculos[i]._id %>" class="btn btn-danger">Delete</a>
+                        <a href="/edit/<%=vehiculos[i]._id %>" class="btn btn-info">Edit</a>
+                    </td>
+                </tr>
+                <% } %>
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</div>
+
+
+</body>
+</html>
